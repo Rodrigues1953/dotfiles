@@ -1,0 +1,1160 @@
+﻿#+STARTUP: overview
+#+PROPERTY: header-args :comments yes :results silent
+* Evil mode
+  :PROPERTIES:
+  :ID:       19ff46d2-b7a8-48c9-add3-9f56b98b4b30
+  :END:
+#+BEGIN_SRC emacs-lisp
+(require 'evil)
+
+(evil-mode 1)
+
+
+#+END_SRC
+* org-roam
+  :PROPERTIES:
+  :ID:       4d26a03c-7a43-4726-8687-e60cfa70d286
+  :END:
+  
+#+BEGIN_SRC emacs-lisp
+
+
+#+END_SRC
+* repos
+  :PROPERTIES:
+  :ID:       7e77c90c-5008-4992-a666-494ea693b6a3
+  :END:
+#+BEGIN_SRC emacs-lisp
+(add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+(setq inhibit-startup-message t)
+(tool-bar-mode -1)
+(fset 'yes-or-no-p 'y-or-n-p)
+(global-set-key (kbd "<f5>") 'revert-buffer)
+#+END_SRC
+* try
+  :PROPERTIES:
+  :ID:       f2dbdd32-d078-42b7-90bb-e82665d9c233
+  :END:
+#+BEGIN_SRC emacs-lisp
+(use-package try
+	:ensure t)
+
+#+END_SRC
+
+* Which-key
+  :PROPERTIES:
+  :ID:       4748db3c-3722-4b16-a80e-c6dbd51a063d
+  :END:
+#+BEGIN_SRC emacs-lisp
+  (use-package which-key			;
+	  :ensure t 
+	  :config
+	  (which-key-mode))
+#+END_SRC
+
+* ORGMODE Bullets set off
+  :PROPERTIES:
+  :ID:       4da07094-f2b5-49da-a2a6-0bd1e28f39fd
+  :END:
+#+BEGIN_SRC emacs-lisp
+
+;;(use-package org-bullets
+;;  :ensure t
+;;  :config
+;;  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+
+;;Modificar os bullets tem que se por #+STARTUP: showall hidestars e comando revert-buffer para transformar o documento org
+
+#+END_SRC
+
+* Helm setup off
+  :PROPERTIES:
+  :ID:       bfeeeca6-cbbe-40c7-8f9f-3bf400c4001b
+  :END:
+#+BEGIN_SRC emacs-lisp
+  ;; (use-package helm
+  ;;              :demand t
+  ;;              :diminish helm-mode
+  ;;              :init
+  ;;              (progn
+  ;;                (require 'helm-config)
+  ;;                (setq helm-candidate-number-limit 100)
+  ;;                (setq helm-idle-delay 0.0
+  ;;                      helm-input-idle-delay 0.01
+  ;;                      helm-yas-display-key-on-candidate t
+  ;;                      helm-quick-update t
+  ;;                      helm-M-x-requires-pattern nil)
+  ;;                (helm-mode)
+  ;;                )
+  ;;              :bind (
+  ;;                     ("C-h a" . helm-apropos)
+  ;;                     ("C-x C-b" . helm-buffers-list)
+  ;;                     ("C-x b" . helm-buffers-list)
+  ;;                     ("M-y" . helm-show-kill-ring)
+  ;;                     ("M-x" . helm-M-x)
+  ;;                     ("C-x C-f" . helm-find-files)
+  ;;                     ("C-c h o" . helm-occur)
+  ;;                     ("C-c h r" . helm-register)
+  ;;                     ("C-c h b" . helm-resume)
+  ;;                     )
+  ;;              :config
+  ;;              (setq helm-command-prefix-key "C-c h")
+  ;;              (setq helm-autoresize-min-height 25)
+  ;;              (setq helm-autoresize-max-height 25)
+  ;;              (setq helm-split-window-in-side-p t
+  ;;                    helm-move-to-line-cycle-in-source t
+  ;;                    helm-ff-search-library-in-sexp t
+  ;;                    helm-scroll-amount 8
+  ;;                    helm-ff-file-name-history-use-recentf t)
+  ;;              (setq helm-buffer-max-length nil)
+  ;;              (helm-mode 1)
+  ;;              (helm-autoresize-mode 1)
+  ;;              (define-key  helm-map (kbd "<tab>") 'helm-execute-persistent-action)
+  ;;              (define-key  helm-map (kbd "C-i") 'helm-execute-persistent-action)
+  ;;              (define-key  helm-map (kbd "C-z") 'helm-select-action)
+  ;;              :ensure helm)
+
+
+
+#+END_SRC
+
+* Diary setup off
+  :PROPERTIES:
+  :ID:       ded8cd69-545c-442d-b081-efc83e6c3f4d
+  :END:
+#+BEGIN_SRC emacs-lisp
+  ;; (add-hook 'diary-display-hook 'fancy-diary-display)
+  ;; (add-hook 'list-diary-entries-hook 'include-other-diary-files)
+  ;; (add-hook 'mark-diary-entries-hook 'mark-included-diary-files)
+  ;; (setq org-agenda-include-diary t)
+#+END_SRC
+
+*  GOOGLECALENDAR setup
+  :PROPERTIES:
+  :ID:       5ab05486-c34e-463b-aa20-1a4b2e325053
+  :END:
+#+BEGIN_SRC emacs-lisp
+(use-package org-gcal
+  :ensure t
+  :config
+   (setq org-gcal-client-id "997702177830-gr9eahuh871f8p0329tgm9lknnkt0m51.apps.googleusercontent.com"
+	 org-gcal-client-secret "9UmUqT9gYejYk-efNWmsVfla"
+	org-gcal-file-alist '(("ruiagr@gmail.com" .  "~/Dropbox/orgfiles/gcal.org"))))
+(add-hook 'org-agenda-mode-hook (lambda () (org-gcal-sync) ))
+(add-hook 'org-capture-after-finalize-hook (lambda () (org-gcal-sync) ))
+#+END_SRC
+
+* Org-agenda setup
+  :PROPERTIES:
+  :ID:       7b911a4f-c61a-42e6-981d-f038a6e37faa
+  :END:
+#+BEGIN_SRC emacs-lisp
+(setq org-agenda-files (list "~/Dropbox/orgfiles/gcal.org"                            
+                               "~/Dropbox/orgfiles/mylife.org"
+                                "~/Dropbox/orgfiles/repeticao.org"
+				"~/Dropbox/orgfiles/mywork.org"
+                               "~/Dropbox/orgfiles/futebol.org"))
+                              ;; "C:/Users/ruiag/Dropbox/orgfiles/captura.org"
+;; "C:/Users/ruiag/Dropbox/orgfiles/flagged.org"
+			     ;;"C:/Users/ruiag/Dropbox/orgfiles/i.org"
+			    ;; "C:/Users/ruiag/Dropbox/orgfiles/schedule.org"
+ ;;   "C:/Users/ruiag/Dropbox/orgfiles/goals.org"
+(global-set-key "\C-cl" 'org-store-link)
+     (global-set-key "\C-ca" 'org-agenda)
+     (global-set-key "\C-cc" 'org-capture)
+(global-set-key "\C-cb" 'org-iswitchb)
+
+(setq org-agenda-custom-commands
+      '(("c" "Simple agenda view"
+	 ((agenda "")
+	  (alltodo "")))))
+#+END_SRC
+
+* Refile setup
+  :PROPERTIES:
+  :ID:       7cef062c-8129-4aec-9dfb-3ff7e2c32881
+  :END:
+#+BEGIN_SRC emacs-lisp
+ '(org-export-backends '(ascii beamer html icalendar latex odt))
+ '(org-log-into-drawer t)
+ '(org-outline-path-complete-in-steps nil)
+ '(org-refile-allow-creating-parent-nodes 'confirm)
+ '(org-refile-targets '((org-agenda-files :level . 1)))
+ '(org-refile-use-outline-path 'file)
+ '(org-trello-current-prefix-keybinding "C-c o")
+
+#+END_SRC
+
+
+* Custom faces set up
+  :PROPERTIES:
+  :ID:       25875139-b6fe-40d3-a011-c7adc7ec16f5
+  :END:
+#+BEGIN_SRC emacs-lisp
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(aw-leading-char-face ((t (:inherit ace-jump-face-foreground :height 3.0)))))
+#+END_SRC
+
+* Mobile org setup
+  :PROPERTIES:
+  :ID:       6498b9bc-87a5-4ac3-9259-a81bfe97d3e0
+  :END:
+#+BEGIN_SRC emacs-lisp
+;; Set to the location of your Org files on your local system
+(setq org-directory "~/Dropbox/orgfiles")
+;; Set to the name of the file where new notes will be stored
+;;(setq org-mobile-inbox-for-pull "~/Dropbox/orgfiles/flagged.org")
+(setq org-mobile-inbox-for-pull "~/Dropbox/orgfiles/flagged.org")
+(setq org-mobile-directory "~/Dropbox/Apps/MobileOrg")
+;; Set to <your Dropbox root directory>/MobileOrg.
+
+;;(setq org-directory "~/Dropbox/org")
+;;(setq org-mobile-inbox-for-pull "~/Dropbox/org/inbox.org")
+;;(setq org-mobile-directory "~/DropBox/Apps/MobileOrg")
+;;(setq org-mobile-files '("~/Dropbox/org"))
+
+
+
+#+END_SRC
+
+* Auto-complete
+  :PROPERTIES:
+  :ID:       2f631b4b-4bf2-4fc9-bc56-b8eae3d227fd
+  :END:
+#+BEGIN_SRC emacs-lisp
+(use-package auto-complete
+  :ensure t
+  :init
+  (progn
+    (ac-config-default)
+    (global-auto-complete-mode t)
+    ))
+ ;;Autocomplete .....ver melhor esta setup e se entra em conflito??????????
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/elisp/ac-dict")
+(ac-config-default)
+(global-auto-complete-mode t)
+   
+#+END_SRC
+
+* Ace-window Para saltar entre buffers
+  :PROPERTIES:
+  :ID:       9d518a23-e44e-4dd1-921b-5331e33f296f
+  :END:
+#+BEGIN_SRC emacs-lisp
+(use-package ace-window
+  :ensure t
+  :init
+  (progn
+    (global-set-key [remap other-window] 'ace-window)
+    (custom-set-faces
+    '(aw-leading-char-face
+       ((t (:inherit ace-jump-face-foreground :height 3.0))))) 
+    ))
+#+END_SRC
+
+* Hungry-delete Para delete os espaços em branco; deletes all the whitespace when you hit backspace or delete
+  :PROPERTIES:
+  :ID:       a6e0b751-72f7-465b-b76e-e19a2545131a
+  :END:
+#+BEGIN_SRC emacs-lisp
+  (use-package hungry-delete
+  :ensure t
+  :config
+(global-hungry-delete-mode))
+#+END_SRC
+
+
+
+* Expand-region expand the marked region in semantic increments (negative prefix to reduce region)
+  :PROPERTIES:
+  :ID:       c02293f4-3340-496c-91de-d80cb3078902
+  :END:
+#+BEGIN_SRC emacs-lisp
+(use-package expand-region
+:ensure t
+:config 
+(global-set-key (kbd "C-=") 'er/expand-region))
+#+END_SRC
+
+
+*  UNDO TREE clippboard
+  :PROPERTIES:
+  :ID:       173c4952-8ea5-420e-9766-fa8fbb33c4ac
+  :END:
+ #+BEGIN_SRC emacs-lisp
+(use-package undo-tree
+:ensure t
+  :init
+  (global-undo-tree-mode))
+#+END_SRC
+
+ 
+*  CAPTURE 2 setup Zamansky
+  :PROPERTIES:
+  :ID:       59ce9632-a6e5-43b3-999e-8fdc82935d50
+  :END:
+#+BEGIN_SRC emacs-lisp
+(defadvice org-capture-finalize 
+    (after delete-capture-frame activate)  
+  "Advise capture-finalize to close the frame"  
+  (if (equal "capture" (frame-parameter nil 'name))  
+    (delete-frame)))
+
+(defadvice org-capture-destroy 
+    (after delete-capture-frame activate)  
+  "Advise capture-destroy to close the frame"  
+  (if (equal "capture" (frame-parameter nil 'name))  
+    (delete-frame)))  
+#+END_SRC
+
+* PDF setup off 
+  :PROPERTIES:
+  :ID:       fd2fef99-6ee3-4a59-bbed-02dcc131fe3a
+  :END:
+#+BEGIN_SRC emacs-lisp
+;;(setenv "PATH" (concat (getenv "PATH") ":/Library/TeX/texbin/"))
+;;(setq exec-path (append exec-path '("/Library/TeX/texbin/")))
+;;CONFIGURAÇAO DO ID AUTOMATICO
+#+END_SRC
+
+* Org Refile set up
+  :PROPERTIES:
+  :ID:       68093632-8c97-439e-9277-27eede96d1cd
+  :END:
+#+BEGIN_SRC emacs-lisp
+(defun my/org-add-ids-to-headlines-in-file ()
+
+(interactive)
+(org-map-entries 'org-id-get-create))
+
+(add-hook 'org-mode-hook
+	  (lambda ()
+	    (add-hook 'before-save-hook 'my/org-add-ids-to-headlines-in-file nil 'local)))
+
+(defun my/copy-id-to-clipboard()
+  (interactive)
+  (when (eq major-mode 'org-mode)
+    (setq mytmpid (funcall 'org-id-get-create))
+    (kill-new mytmpid)
+    (message "Copied %s to Killring (Clipboard)" mytmpid)
+    ))
+
+(global-set-key (kbd "\C-ci") 'my/copy-id-to-clipboard)
+#+END_SRC
+
+
+
+* Macros INSERÇAO DO MATHJAX e outras macros
+  :PROPERTIES:
+  :ID:       c65cd8af-3540-4821-8b2a-b32cd70bda3a
+  :END:
+#+BEGIN_SRC emacs-lisp
+;;(fset 'DEMO
+ ;;  (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ([201326629 92 91 67 68 65 84 65 92 91 32 42 60 112 62 return 91 67 68 65 84 65 91 32 60 112 62 32 (down-mouse-1 (#<window 4 on  *Minibuf-0*> 55 (603 . 6) 1966230375 nil 55 (54 . 0) nil (9 . 6) (11 . 23))) (mouse-1 (#<window 4 on  *Minibuf-0*> 55 (603 . 6) 1966230515 nil 55 (54 . 0) nil (9 . 6) (11 . 23))) 60 115 99 114 105 112 116 32 115 114 99 61 39 104 116 116 112 115 58 47 47 99 100 110 106 115 46 99 108 111 117 100 102 108 97 114 101 46 99 111 109 47 97 106 97 120 47 108 105 98 115 47 109 97 116 104 106 97 120 47 50 46 55 46 48 47 77 97 116 104 74 97 120 46 106 115 63 99 111 110 102 105 103 61 84 101 88 45 77 77 76 45 (down-mouse-1 (#<window 4 on  *Minibuf-0*> 147 (934 . 33) 1966362171 nil 147 (84 . 1) nil (10 . 10) (11 . 23))) (mouse-1 (#<window 4 on  *Minibuf-0*> 147 (934 . 33) 1966362312 nil 147 (84 . 1) nil (10 . 10) (11 . 23))) 65 77 95 67 72 84 77 76 39 62 60 47 115 99 114 105 112 116 62 return 33] 0 "%d")) arg)))    
+(fset 'moodle
+   (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ([201326629 92 91 67 68 65 84 65 92 91 32 42 60 112 62 return 91 67 68 65 84 65 91 32 60 112 62 32 60 115 99 114 105 112 116 32 115 114 99 61 39 104 116 116 112 115 58 47 47 99 100 110 106 115 46 99 108 111 117 100 102 108 97 114 101 46 99 111 109 47 97 106 97 120 47 108 105 98 115 47 109 97 116 104 106 97 120 47 50 46 55 46 48 47 77 97 116 104 74 97 120 46 106 115 63 99 111 110 102 105 103 61 84 101 120 backspace 88 45 77 77 76 45 65 77 95 67 72 84 77 76 39 62 60 47 115 99 114 105 112 116 62 return 33] 0 "%d")) arg))) 
+(fset 'latino
+   [?g ?g right right right right right right right right right right right right right right right right right right right right right right right right right right right right right right ?d ?w ?d ?w ?d ?w ?i ?I ?S ?O ?- ?8 ?8 ?5 ?9 ?- ?1 escape])   
+(fset 'todos [?g ?g ?\M-x ?c ?e ?d ?i ?l ?h ?o return ?\M-x ?l ?a ?t ?i ?n ?o return ?g ?g ?\M-x ?m ?o ?o ?d ?l ?e return ?g ?g])  
+(fset 'aagudo
+   [?g ?g ?\M-% ?á return ?\\ ?\' ?a return ?! ?g ?g]) 
+(fset 'eagudo
+   [?g ?g ?\M-% ?é return ?\\ ?\' ?e return ?!]) 
+(fset 'iagudo
+   [?g ?g ?\M-% ?í return ?\\ ?\' ?i return ?!])
+(fset 'oagudo
+   [?g ?g ?\M-% ?ó return ?\\ ?\' ?o return ?!])  
+(fset 'uagudo
+   [?g ?g ?\M-% ?ú return ?\\ ?\' ?u return ?!])
+(fset 'agudos
+   [?g ?g ?\M-x ?a ?a ?g ?u ?d ?o return ?g ?g ?\M-x ?e ?a ?g ?u ?d ?o return ?g ?g ?\M-x ?i ?a ?g ?u ?d ?o return ?g ?g ?\M-x ?u ?a ?g ?u ?d ?o return ?g ?g ?\M-x ?o ?a ?g ?u ?d ?o return ?g ?g]) 
+(fset 'cedilha
+   [?g ?g ?\M-% ?ç return ?\\ ?c ?  ?c return ?!])    
+(fset 'atil
+   [?g ?g ?\M-% ?ã return ?\\ ?~ ?a return ?!])
+(fset 'otil
+    [?g ?g ?\M-% ?õ return ?\\ ?~ ?o return ?!]) 
+(fset 'agrave
+   [?g ?g ?\M-% ?à return ?\\ ?` ?a return ?!])  
+(fset 'egrave
+   [?g ?g ?\M-% ?è return ?\\ ?` ?e return ?!]) 
+(fset 'igrave
+   [?g ?g ?\M-% ?ì return ?\\ ?` ?i return ?!]) 
+(fset 'ograve
+   [?g ?g ?\M-% ?ò return ?\\ ?` ?o return ?!])  
+(fset 'ugrave
+   [?g ?g ?\M-% ?ù return ?\\ ?` ?u return ?!]) 
+(fset 'graves
+   [?g ?g ?\M-x ?a ?g ?r ?a ?v ?e return ?g ?g ?\M-x ?e ?g ?r ?a ?v ?e return ?g ?g ?\M-x ?o backspace ?i ?g ?r ?a ?v ?e return ?g ?g ?\M-x ?o ?g ?r ?a ?v ?e return ?g ?g ?\M-x ?u ?g ?r ?a ?v ?e return ?g ?g]) 
+(fset 'acento
+    [?g ?g ?\M-x ?o ?g ?r ?a ?v ?e return ?g ?g ?\M-x ?g ?r ?a ?v ?e ?s return ?g ?g])     
+(fset 'acircon
+   [?g ?g ?\M-% ?â return ?\\ ?^ ?a return ?!]) 
+(fset 'ecircon
+   [?g ?g ?\M-% ?ê return ?\\ ?^ ?e return ?!]) 
+(fset 'icircon
+   [?g ?g ?\M-% ?î return ?\\ ?^ ?i return ?!])  
+(fset 'ocircon
+   [?g ?g ?\M-% ?ô return ?\\ ?^ ?o return ?!])     
+(fset 'ucircon
+   [?g ?g ?\M-% ?û return ?\\ ?^ ?u return ?!])  
+(fset 'circons
+   [?g ?g ?\M-x ?a ?c ?i ?r ?c ?o ?n return ?g ?g ?\M-x ?e ?c ?i ?r ?c ?o ?n return ?g ?g ?\M-x ?i ?c ?i ?r ?c ?o ?n return ?g ?g ?\M-x ?o ?c ?i ?r ?c ?o ?n return ?g ?g ?\M-x ?u ?c ?i ?r ?c ?o ?n return ?g ?g])  
+(fset 'acentos[?g ?g ?\M-% ?á return ?\\ ?\' ?a return ?! ?g ?g ?g ?g ?\M-% ?é return ?\\ ?\' ?e return ?! ?g ?g ?g ?g ?\M-% ?í return ?\\ ?\' ?i return ?!  ?g ?g ?\M-% ?ó return ?\\ ?\' ?o return ?! ?g ?g ?\M-% ?ú return ?\\ ?\' ?u return ?! ?g ?g ?\M-% ?ç return ?\\ ?c ?  ?c return ?! ?g ?g ?\M-% ?ã return ?\\ ?~ ?a return ?! ?g ?g ?\M-% ?õ return ?\\ ?~ ?o return ?! ?g ?g ?\M-% ?õ return ?\\ ?~ ?o return ?! ?g ?g ?\M-% ?à return ?\\ ?` ?a return ?! ?g ?g ?\M-% ?è return ?\\ ?` ?e return ?! ?g ?g ?\M-% ?ì return ?\\ ?` ?i return ?! ?g ?g ?\M-% ?ò return ?\\ ?` ?o return ?! ?g ?g ?\M-% ?ù return ?\\ ?` ?u return ?! ?g ?g ?\M-% ?â return ?\\ ?^ ?a return ?! ?g ?g ?\M-% ?ê return ?\\ ?^ ?e return ?! ?g ?g ?\M-% ?î return ?\\ ?^ ?i return ?! ?g ?g ?\M-% ?ô return ?\\ ?^ ?o return ?! ?g ?g ?\M-% ?û return ?\\ ?^ ?u return ?!])  
+(fset 'tab
+   [?i ?< ?t ?a ?b ?l ?e ?  ?s ?t ?y ?l ?e ?= ?\" ?b ?o ?r ?d ?e ?r ?: ?  ?1 ?p ?x ?  ?s ?o ?l ?i ?d ?  ?# ?0 ?0 ?0 ?0 ?0 ?0 ?\; ?\" ?  ?s ?u ?m ?m ?a ?r ?y ?= ?\" ?S ?u ?m ?a ?r ?i ?o ?\" ?  ?b ?o ?r ?d ?e ?r ?= ?\" ?1 ?\" return ?c ?e ?l ?l ?s ?p ?a ?c ?i ?n ?g ?= ?\" ?1 ?\" ?  ?c ?e ?l ?l ?p ?a ?d ?d ?i ?n ?g ?= ?\" ?1 ?\" ?> ?< ?c ?a ?p ?t ?i ?o ?n ?> ?  ?< ?/ ?c ?a ?p ?t ?i ?o ?n ?> return ?< ?t ?b ?o ?d ?y ?> return ?< ?t ?r ?> return ?< ?t ?d ?  ?s ?t ?y ?l ?e ?= ?\" ?b ?o ?r ?d ?e ?r ?: ?  ?1 ?p ?x ?  ?s ?o ?l ?i ?d ?  ?# ?0 ?0 ?0 ?0 ?0 ?0 ?\; ?  ?b ?a ?v backspace ?c ?k ?g ?r ?o ?u ?n ?d ?- ?c ?o ?l ?o ?r ?: ?  ?# ?f ?f ?f ?f ?c ?c ?\; ?\" ?> ?< ?/ ?t ?d ?> return ?< ?/ ?t ?r ?> return ?< ?/ ?t ?b ?o ?d ?y ?> return ?< ?/ ?t ?a ?b ?l ?e ?> escape])
+(fset 'graf
+   [?i ?\\ ?b ?e ?g ?i ?n ?\{ ?t ?i ?k ?z ?p ?i ?c ?t ?u ?r ?e ?\} return ?\\ ?n ?o ?d ?e ?\[ ?i ?n ?n ?e ?r ?  ?s ?e ?p ?= ?0 ?p ?t ?\] ?  ?\( ?b ?a ?n ?d ?e ?i ?r ?a ?1 ?\) ?  ?a ?t ?  ?\( ?2 ?0 ?0 ?, ?2 ?0 ?0 ?\) return ?  ?\{ ?\\ ?i ?n ?c ?l ?u ?d ?e ?g ?r ?a ?p ?h ?i ?c ?s ?\[ ?w ?i ?d ?t ?h ?= ?6 ?c ?m ?\] ?  ?a backspace ?\{ ?  ?\} ?\; return ?\\ ?e ?n ?d ?\{ ?t ?i ?k ?z ?p ?i ?c ?t ?u ?r ?e ?\} escape])
+(fset 'tilos
+   [?g ?g ?\M-x ?t backspace ?a ?t ?i ?l return ?g ?g ?\M-x ?o ?t ?i ?l return ?g ?g])
+;; (fset 'acento
+;;    [?g ?g ?\M-x ?a ?g ?u ?d ?o ?s return ?\M-x ?g ?r ?a ?v ?e ?s return ?g ?g])
+;; (fset 'tiraracentos
+;;    [?g ?g ?\M-x ?a ?c ?e ?n ?t ?o return ?g ?g ?\M-x ?c ?i ?r ?c ?o ?n ?s return ?g ?g])
+;; (fset 'merda
+;;    [?g ?g ?\M-x ?a ?g ?u ?d ?o ?s return ?g ?g ?\M-x ?g ?r ?a ?v ?e ?s return ?g ?g])
+;; (fset 'foda
+;;    [?g ?g ?\M-x ?m ?e ?r ?d ?a return ?g ?g ?\M-x ?c ?i ?r ?c ?o ?n ?s return ?g ?g])
+ (fset 'tudo
+    [?g ?g ?\M-x ?f ?o ?d ?a return ?g ?g ?\M-x ?c ?e ?d ?i ?l return ?g ?g])  
+;; (fset 'limpar
+;;    [?g ?g ?\M-x ?t ?u ?d ?o return ?g ?g ?\M-x ?t ?i ?l ?o ?s return ?g ?g])
+(fset 'cedil
+   [?g ?g ?\M-% ?\\ ?c ?  ?c return ?& ?c ?c ?e ?d ?i ?l ?\; return ?!])  
+(fset 'frac
+   "\\frac{}{}")  
+
+(fset 'tikz
+   [?\\ ?b ?e ?g ?i ?n ?\{ ?t ?i ?k ?z ?p ?i ?c ?t ?u ?r ?e ?\} ?\[ ?t ?h ?i ?c ?k ?, ?h ?e ?l ?p ?  ?l ?i ?n ?e ?s ?/ ?. ?s ?t ?y ?l ?e ?= ?\{ ?t ?h ?i ?n ?, ?d ?r ?a ?w ?= ?b ?l ?a ?c ?k ?! ?5 ?0 ?\} ?\] return ?\\ ?d ?e ?f ?\\ ?A ?\{ ?\\ ?t ?e ?x ?t ?c ?o ?l ?o ?r ?\{ ?o ?r ?a ?n ?g ?e ?\} ?\{ ?$ ?A ?$ ?\} return ?\\ ?d ?e ?f ?\\ ?B ?\{ ?i ?n ?p ?u ?t backspace backspace backspace backspace backspace ?\\ ?t ?e ?x ?t ?c ?o ?l ?o ?r ?\{ ?i ?n ?p ?u ?t ?\} ?\{ ?$ ?B ?$ ?0 backspace ?\} return ?\\ ?d ?e ?f ?| ?C ?\{ backspace backspace backspace ?\\ ?C ?\{ ?\\ ?t ?e ?x ?t ?c ?o ?l ?o ?r ?\{ ?o ?u ?t ?p ?u ?t ?\} ?\{ ?$ ?C ?$ ?\} return ?\\ ?c ?o ?l ?o ?r ?l ?e ?t ?\{ ?i ?n ?p ?u ?t ?\} ?\{ ?i ?n ?p ?u ?t ?\} ?\{ ?b ?l ?u ?e ?! ?8 ?0 ?! ?b ?l ?a ?c ?k ?\} return ?\\ ?c ?o ?l ?o ?r ?l ?e ?t ?\{ ?o ?u ?t ?p ?u ?t ?\} up right right right right right right backspace backspace backspace backspace backspace backspace backspace down right ?\{ ?r ?e ?d ?! ?7 ?0 ?! ?b ?l ?a ?c ?k ?\} return return ?\\ ?c ?o ?o ?r ?d ?i ?n ?a ?t ?e ?  ?\[ ?l ?a ?b ?e ?l ?= ?l ?e ?f ?t ?: ?A backspace ?\\ ?A ?\] ?  ?\( ?A ?\) ?  ?a ?t ?  ?\( ?$ ?  ?\( ?0 ?, ?0 ?\) ?  ?+ ?  ?. ?1 ?* ?\( ?r ?a ?n ?d ?, ?r ?a ?n ?d ?\) ?  ?$ ?\) ?\; return ?\\ ?c ?o ?o ?r ?d ?i ?n ?a ?t ?e ?  ?\[ ?l ?a ?b ?e ?l ?= ?a ?b ?o ?v ?e ?: ?\\ ?D ?\] ?  ?\( ?D ?\) ?! ?3 ?. ?7 ?5 ?! ?\( ?A ?\) ?  ?$ ?\) ?  backspace backspace backspace backspace backspace backspace backspace backspace backspace backspace backspace backspace backspace ?  ?a ?t ?  ?\( ?$ ?  ?\( ?A ?\) ?! ?. ?5 ?! ?\( ?B ?\) ?  ?| backspace ?! ?  ?\{ ?s ?i ?n ?\( ?6 ?0 ?\) ?* ?2 ?  ?! ?  ?9 ?0 ?: ?\( ?B ?\) ?  ?$ ?\) ?\; return ?\\ ?d ?r ?a ?w ?  ?\[ ?h ?e ?l ?p ?  ?l ?i ?n ?e ?s ?\] ?  ?\( ?D ?\) ?  ?- ?- ?  ?\( ?$ ?  ?\( ?D ?\) ?! ?3 ?. ?7 ?5 ?! ?\( ?A ?\) ?  ?$ ?\) ?  ?c ?o ?o ?r ?d ?i ?n ?a ?t ?e ?  ?\[ ?l ?a ?b ?e ?l ?= ?- ?1 ?3 ?5 ?: ?\\ ?H ?\] ?  ?\( ?E S-backspace ?H ?\) ?\; return ?\\ ?d ?r ?a ?w ?  ?\[ ?i ?n ?p ?u ?t ?\] ?  ?\( ?B ?\) ?  ?- ?- ?  ?\( ?C ?\) ?\; return ?\\ ?n ?o ?d ?e ?  ?\( ?H ?\) ?  ?a ?t ?  ?\( ?B ?\) ?  ?\[ ?n ?a ?m ?e ?  ?p ?a ?t ?h ?= ?H ?, ?h ?e ?l ?p ?  ?l ?i ?n ?e ?s ?, ?c ?i ?r ?c ?l ?e ?  ?t ?h ?r ?o ?u ?g ?h ?= ?\( ?C ?\) ?, ?d ?r ?a ?w ?, ?l ?a ?b ?e ?l ?= ?1 ?3 ?5 ?: ?\\ ?H ?\] ?  ?\{ ?\} ?\; return ?\\ ?p ?a ?t ?h ?  ?\[ ?n ?a ?m ?e ?  ?i ?n ?t ?e ?r ?s ?e ?c ?t ?i ?o ?n ?s ?= ?\{ ?o ?f ?= ?K ?  ?a ?n ?d ?  ?B ?- ?- ?F ?, ?b ?y ?= ?\{ ?\[ ?l ?a ?b ?e ?l ?= ?r ?i ?g ?h ?t ?: ?\\ ?G ?\] ?G ?\} ?\} ?\] ?\; return ?\\ ?d ?r ?a ?w ?\[ ?o ?u ?t ?p ?u ?t ?\] ?  ?\( ?A ?\) ?  ?- ?- ?  ?\( ?B ?\) left backspace ?i ?n ?t ?e ?r ?s ?e ?c ?t ?o ?n ?- ?1 right ?\; return return return return ?\\ ?f ?o ?r ?e ?a ?c ?h ?  ?\\ ?p ?o ?i ?n ?t ?  ?i ?n ?  ?\{ ?A ?, ?B ?, ?C ?, ?D ?, ?E ?, ?G ?, ?H ?, ?I ?\} return ?  ?  ?  ?  ?\\ ?f ?i ?l ?l ?  ?\[ ?b ?l ?a ?c ?k ?, ?o ?p ?a ?c ?i ?t ?y ?= ?. ?5 ?\] ?  ?\( ?\\ ?p ?o ?i ?n ?t ?\) ?  ?c ?i ?r ?c ?l ?e ?  ?\( ?2 ?p ?t ?\) ?\; return ?\\ ?e ?n ?d ?\{ ?t ?i ?k ?z ?p ?i ?c ?t ?u ?r ?e ?\} up up up up up])
+(fset 'lete
+   [?\\ ?p ?a ?t ?h ?  ?l ?e ?t ?  ?\\ ?p ?1 ?  ?= ?  ?\( ?$ ?  ?\( ?B ?\) ?  ?- ?  ?\( ?C ?\) ?  ?$ ?\) ?  ?i ?n return ?  ?  ?  ?  ?c ?o ?o ?r ?d ?i ?n ?a ?t ?e ?  ?\[ ?l ?a ?b ?e ?l ?= ?l ?e ?f ?t ?: ?$ ?G ?$ ?\] ?  ?\( ?G ?\) ?  ?a ?t ?  ?\( ?$ ?  ?\( ?B ?\) ?  ?! ?  ?v ?e ?c ?l ?e ?n ?\( ?\\ ?x ?1 ?, ?\\ ?y ?1 ?\) ?  ?! ?  ?\( ?F ?\) ?\S-  ?$ ?\) ?\; return ?\\ ?f ?i ?l ?l ?\[ ?r ?e ?d ?, ?o ?p ?a ?c ?i ?t ?y ?= ?0 ?. ?5 ?\] ?  ?\( ?G ?\) ?  ?c ?i ?r ?c ?l ?e ?\; return])
+(fset 'tik
+   [?\\ ?b ?e ?g ?i ?n ?\{ ?t ?i ?k ?z ?p ?i ?c ?t ?u ?r ?e ?\} ?\[ ?t ?h ?i ?c ?k ?, ?h ?e ?l ?p ?  ?l ?i ?n ?e ?s ?/ ?. ?s ?t ?y ?l ?e ?= ?\{ ?t ?h ?i ?n ?, ?d ?r ?a ?w ?= ?b ?l ?a ?c ?k ?! ?5 ?0 ?\} ?\] return ?\\ ?d ?e ?f ?\\ ?A ?\{ ?\\ ?t ?e ?x ?t ?c ?o ?l ?o ?r ?\{ ?o ?r ?a ?n ?g ?e ?\} ?\{ ?$ ?A ?$ ?\} ?\} return ?\\ ?d ?e ?f ?\\ ?B ?\{ ?i ?n ?p ?u ?t backspace backspace backspace backspace backspace ?\\ ?t ?e ?x ?t ?c ?o ?l ?o ?r ?\{ ?i ?n ?p ?u ?t ?\} ?\{ ?$ ?B ?$ ?0 backspace ?\} ?\} return ?\\ ?d ?e ?f ?| ?C ?\{ backspace backspace backspace ?\\ ?C ?\{ ?\\ ?t ?e ?x ?t ?c ?o ?l ?o ?r ?\{ ?o ?u ?t ?p ?u ?t ?\} ?\{ ?$ ?C ?$ ?\} ?\} return ?\\ ?c ?o ?l ?o ?r ?l ?e ?t ?\{ ?i ?n ?p ?u ?t ?\} ?\{ ?i ?n ?p ?u ?t ?\} ?\{ ?b ?l ?u ?e ?! ?8 ?0 ?! ?b ?l ?a ?c ?k ?\} return ?\\ ?c ?o ?l ?o ?r ?l ?e ?t ?\{ ?o ?u ?t ?p ?u ?t ?\} up right right right right right right backspace backspace backspace backspace backspace backspace backspace down right ?\{ ?r ?e ?d ?! ?7 ?0 ?! ?b ?l ?a ?c ?k ?\} return return ?\\ ?c ?o ?o ?r ?d ?i ?n ?a ?t ?e ?  ?\[ ?l ?a ?b ?e ?l ?= ?l ?e ?f ?t ?: ?A backspace ?\\ ?A ?\] ?  ?\( ?A ?\) ?  ?a ?t ?  ?\( ?$ ?  ?\( ?0 ?, ?0 ?\) ?  ?+ ?  ?. ?1 ?* ?\( ?r ?a ?n ?d ?, ?r ?a ?n ?d ?\) ?  ?$ ?\) ?\; return ?\\ ?c ?o ?o ?r ?d ?i ?n ?a ?t ?e ?  ?\[ ?l ?a ?b ?e ?l ?= ?a ?b ?o ?v ?e ?: ?\\ ?D ?\] ?  ?\( ?D ?\) ?! ?3 ?. ?7 ?5 ?! ?\( ?A ?\) ?  ?$ ?\) ?  backspace backspace backspace backspace backspace backspace backspace backspace backspace backspace backspace backspace backspace ?  ?a ?t ?  ?\( ?$ ?  ?\( ?A ?\) ?! ?. ?5 ?! ?\( ?B ?\) ?  ?| backspace ?! ?  ?\{ ?s ?i ?n ?\( ?6 ?0 ?\) ?* ?2 ?\} ?  ?! ?  ?9 ?0 ?: ?\( ?B ?\) ?  ?$ ?\) ?\; return ?\\ ?d ?r ?a ?w ?  ?\[ ?h ?e ?l ?p ?  ?l ?i ?n ?e ?s ?\] ?  ?\( ?D ?\) ?  ?- ?- ?  ?\( ?$ ?  ?\( ?D ?\) ?! ?3 ?. ?7 ?5 ?! ?\( ?A ?\) ?  ?$ ?\) ?  ?c ?o ?o ?r ?d ?i ?n ?a ?t ?e ?  ?\[ ?l ?a ?b ?e ?l ?= ?- ?1 ?3 ?5 ?: ?\\ ?H ?\] ?  ?\( ?E S-backspace ?H ?\) ?\; return ?\\ ?d ?r ?a ?w ?  ?\[ ?i ?n ?p ?u ?t ?\] ?  ?\( ?B ?\) ?  ?- ?- ?  ?\( ?C ?\) ?\; return ?\\ ?n ?o ?d ?e ?  ?\( ?H ?\) ?  ?a ?t ?  ?\( ?B ?\) ?  ?\[ ?n ?a ?m ?e ?  ?p ?a ?t ?h ?= ?H ?, ?h ?e ?l ?p ?  ?l ?i ?n ?e ?s ?, ?c ?i ?r ?c ?l ?e ?  ?t ?h ?r ?o ?u ?g ?h ?= ?\( ?C ?\) ?, ?d ?r ?a ?w ?, ?l ?a ?b ?e ?l ?= ?1 ?3 ?5 ?: ?\\ ?H ?\] ?  ?\{ ?\} ?\; return ?\\ ?p ?a ?t ?h ?  ?\[ ?n ?a ?m ?e ?  ?i ?n ?t ?e ?r ?s ?e ?c ?t ?i ?o ?n ?s ?= ?\{ ?o ?f ?= ?K ?  ?a ?n ?d ?  ?B ?- ?- ?F ?, ?b ?y ?= ?\{ ?\[ ?l ?a ?b ?e ?l ?= ?r ?i ?g ?h ?t ?: ?\\ ?G ?\] ?G ?\} ?\} ?\] ?\; return ?\\ ?d ?r ?a ?w ?\[ ?o ?u ?t ?p ?u ?t ?\] ?  ?\( ?A ?\) ?  ?- ?- ?  ?\( ?B ?\) left backspace ?i ?n ?t ?e ?r ?s ?e ?c ?t ?i ?o ?n ?- ?1 right ?\; return ?\\ ?p ?a ?t ?h ?  ?\[ ?n ?a ?m ?e ?  ?p ?a ?t ?h ?= ?B ?- ?- ?F ?\] ?  ?\( ?B ?  ?- ?- ?  backspace backspace backspace backspace ?\) ?  ?- ?- ?  ?\( ?F ?\) ?\; return ?\\ ?p ?a ?t ?h ?  ?l ?e ?t ?  ?\\ ?p ?1 ?  ?= ?  ?\( ?$ ?  ?\( ?B ?\) ?  ?- ?  ?\( ?C ?\) ?  ?$ ?\) ?  ?i ?n return ?  ?  ?  ?  ?c ?o ?o ?r ?d ?i ?n ?a ?t ?e ?  ?\[ ?l ?a ?b ?e ?l ?= ?l ?e ?f ?t ?: ?$ ?G ?$ ?\] ?  ?\( ?G ?\) ?  ?a ?t ?  ?\( ?$ ?  ?\( ?B ?\) ?  ?! ?  ?v ?e ?c ?l ?e ?n ?\( ?\\ ?x ?1 ?, ?\\ ?y ?1 ?\) ?  ?! ?  ?\( ?F ?\) ?\S-  ?$ ?\) ?\; return ?\\ ?f ?i ?l ?l ?\[ ?r ?e ?d ?, ?o ?p ?a ?c ?i ?t ?y ?= ?0 ?. ?5 ?\] ?  ?\( ?G ?\) ?  ?c ?i ?r ?c ?l ?e ?\; return return return return ?\\ ?f ?o ?r ?e ?a ?c ?h ?  ?\\ ?p ?o ?i ?n ?t ?  ?i ?n ?  ?\{ ?A ?, ?B ?, ?C ?, ?D ?, ?E ?, ?G ?, ?H ?, ?I ?\} return ?  ?  ?  ?  ?\\ ?f ?i ?l ?l ?  ?\[ ?b ?l ?a ?c ?k ?, ?o ?p ?a ?c ?i ?t ?y ?= ?. ?5 ?\] ?  ?\( ?\\ ?p ?o ?i ?n ?t ?\) ?  ?c ?i ?r ?c ?l ?e ?  ?\( ?2 ?p ?t ?\) ?\; return ?\\ ?e ?n ?d ?\{ ?t ?i ?k ?z ?p ?i ?c ?t ?u ?r ?e ?\} up up up up up])             
+(fset 'for
+   [?\\ ?f ?o ?r ?e ?a ?c ?h ?  ?\\ ?x ?/ ?\\ ?x ?t ?e ?x ?t ?  ?i ?n ?  ?\{ ?- ?1 ?, ?  ?- ?0 ?. ?5 ?/ ?- ?\\ ?f ?r ?a ?c ?\{ ?1 ?\} ?\{ ?2 ?\} ?, ?  ?0 ?. ?5 ?/ ?\\ ?f ?r ?a ?c ?\{ ?1 ?\} ?\{ ?2 ?\} ?, ?  ?1 ?\} return tab ?  ?  ?  ?  ?\\ ?d ?r ?a ?w ?\( ?\\ ?x ?  ?c ?m ?, ?1 ?p ?t ?\) ?  ?- ?- ?  ?\( ?\\ ?x ?  ?c ?m ?, ?- ?1 ?p ?t ?\) ?  ?n ?o ?d ?e ?\[ ?a ?n ?c ?h ?o ?r ?= ?n ?o ?r ?t ?h ?\] ?  ?\{ ?$ ?\\ ?x ?t ?e ?x ?t ?$ ?\) backspace ?\} ?\; return])
+(fset 'arc
+   [?\\ ?f ?i ?l ?l ?d ?r ?a ?w ?\[ ?f ?i ?l ?l ?= ?g ?r ?e ?e ?n ?! ?2 ?0 ?, ?d ?r ?a ?w ?= ?g ?r ?e ?e ?n ?! ?5 ?0 ?! ?b ?l ?a ?c ?k ?\] ?  ?8 ?0 backspace backspace ?\( ?0 ?, ?0 ?\) ?  ?- ?- ?  ?\( ?3 ?m ?m ?, ?0 ?m ?m ?\) return ?  ?  ?  ?a ?r ?c ?  ?\[ ?s ?t ?a ?r ?t ?  ?a ?n ?g ?l ?e ?= ?0 ?, ?  ?e ?n ?d ?  ?a ?n ?g ?l ?e ?= ?3 ?0 ?, ?  ?r ?a ?d ?i ?u ?s ?= ?3 ?m ?m ?\] ?  ?- ?- ?  ?c ?y ?c ?l ?e ?\; return ?\\ ?d ?r ?a ?w ?  ?\( ?0 ?, ?0 ?\) ?  ?c ?i ?r ?c ?l ?e ?  ?\[ ?r ?a ?d ?i ?u ?s ?= ?1 ?c ?m ?\] ?\; return])
+(fset 'clip
+   [?\\ ?c ?l ?i ?p ?  ?\( ?0 ?, ?0 ?\) ?  ?r ?e ?c ?t ?a ?n ?g ?l ?e ?  ?\( ?1 ?, ?1 ?\) ?\; return])
+(fset 'grid
+   [?\\ ?d ?r ?a ?w ?\[ ?0 ?, ?0 backspace backspace backspace ?s ?t ?e ?p ?= ?0 ?. ?5 ?c ?m ?, ?h ?e ?l ?p ?  ?l ?i ?m backspace ?n ?e ?s ?\] ?  ?\( ?0 ?, ?0 ?\) ?  ?g ?r ?i ?d ?  ?\( ?1 ?, ?1 ?\) ?\; return])
+(fset 'draw
+   [?\\ ?d ?r ?a ?w ?\[ ?- ?> ?, ?v ?e ?r ?y ?  ?t ?h ?i ?c ?k ?, ?r ?e ?d ?\] return ?  ?  ?  ?\( ?3 ?0 ?: ?1 ?c ?m ?\) ?  ?- ?- ?  ?n ?o ?d ?e ?\[ ?l ?e ?f ?t ?= ?1 ?p ?t ?, ?f ?i ?l ?l ?= ?w ?h ?i ?t ?e ?\] ?  ?\{ ?$ ?\\ ?s ?i ?n ?  ?\\ ?a ?l ?p ?h ?a ?$ ?\} ?  ?\( ?3 ?0 ?: ?1 ?c ?m ?  ?| ?- ?  ?x ?  ?a ?x ?i ?s ?\) ?\; return])
+(fset 'rectangle
+   [?\\ ?d ?r ?a ?w ?  ?\( ?0 ?, ?0 ?\) ?  ?r ?e ?c ?t ?a ?n ?g ?l ?e ?  ?\( ?1 ?, ?1 ?\) ?\; return])
+(fset 'circle
+   [?\\ ?d ?r ?a ?w ?  ?\( ?0 ?, ?0 ?\) ?  ?c ?i ?r ?c ?l ?e ?  ?\[ ?r ?a ?d ?i ?u ?s ?\] backspace ?= ?1 ?c ?m ?\] ?\; return])
+(fset 'angle
+   [?\\ ?c ?o ?o ?r ?d ?i ?n ?a ?t ?e ?  ?\( ?A ?\) ?  ?- ?- ?  ?\( ?1 ?, ?0 ?\) ?\; return ?\\ ?c ?o ?o ?r ?d ?i ?n ?a ?t ?e ?  ?\( ?B ?\) ?  ?- ?- ?  ?\( ?0 ?, ?0 ?\) ?\; return ?\\ ?c ?o ?o ?r ?d ?i ?n ?a ?t ?e ?  ?\( ?C ?\) ?  ?- ?- ?  ?\( ?3 ?0 ?: ?1 ?c ?m ?\) ?\; return return ?\\ ?d ?r ?a ?w ?  ?\( ?A ?\) ?- backspace ?  ?- ?- ?  ?\( ?B ?\) ?  ?- ?- ?  ?\( ?C ?\) return ?  ?  ?  ?  ?  ?  ?  ?p ?i ?c ?  ?\[ ?d ?r ?a ?w ?= ?g ?r ?e ?e ?n ?! ?5 ?0 ?! ?b ?l ?a ?c ?k ?, ?  ?f ?i ?l ?l ?= ?g ?r ?e ?e ?n ?! ?2 ?0 ?, ?  ?a ?n ?g ?l ?e ?  ?r ?a ?d ?i ?u ?s ?= ?9 ?m ?m ?, return ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?  ?\" ?$ ?\\ backspace backspace backspace backspace ?\" backspace backspace ?~ ?~ backspace backspace ?\" ?$ ?\\ ?a ?l ?p ?h ?a ?$ ?\" ?\" backspace ?\" S-backspace S-backspace ?\" ?\" left left left left left left left left left backspace backspace ?\" ?\" right right right right right right right right right ?\] ?  ?\{ ?a ?n ?g ?l ?e ?  ?= ?  ?A ?- ?- ?B ?- ?- ?C ?\} ?\; return])
+(fset 'pic
+   [?\\ ?t ?i ?k ?z ?s ?e ?t ?\{ return ?  ?  ?s ?e ?a ?g ?u ?l ?l ?/ ?. ?p ?i ?c ?= ?\{ return ?  ?  ?  ?  ?  ?\\ ?d ?r ?a ?w ?  ?\( ?- ?3 ?m ?m ?, ?0 ?\) ?  ?t ?o ?  ?\[ ?b ?e ?n ?d ?  ?l ?e ?f ?t ?\] ?  ?\( ?0 ?, ?0 ?\) ?  ?t ?o ?  ?\[ ?b ?e ?n ?d ?  ?l ?e ?f ?t ?\] ?  ?\( ?3 ?m ?m ?, ?0 ?\) ?\; return ?  ?  ?  ?\} return ?\} return])
+(fset 'interse
+   [?\\ ?c ?o ?o ?r ?d ?i ?n ?a ?t ?e ?  ?\( ?X ?\) ?  ?a ?t ?  ?\( ?i ?n ?t ?e ?r ?s ?e ?c ?t ?i ?o ?n ?  ?c ?s ?: ?f ?i ?r ?s ?t ?  ?l ?i ?n ?e ?= ?\{ ?\( ?A ?\) ?- ?- ?\( ?B ?\) ?\} ?, ?  ?s ?e ?c ?o ?n ?d ?  ?l ?i ?n ?e ?= ?\{ ?\( ?E ?\) ?- ?- ?\( ?F ?\) ?\} ?\) ?\; return])
+(fset 'edge
+   [?\\ ?p ?a ?t ?h return ?  ?  ?  ?\( ?A ?\) ?  ?e ?d ?g ?e ?  ?\[ ?r ?e ?d ?, ?  ?t ?h ?i ?c ?k ?\] ?  ?\( ?B ?\) return ?  ?  ?  ?  backspace ?\( ?C ?\) ?  ?e ?d ?g ?e ?  ?\[ ?b ?l ?u ?e ?, ?  ?t ?h ?i ?c ?k ?\] ?  ?\( ?D ?\) return ?  ?  ?  ?\( ?E ?\) ?  ?e ?d ?g ?e ?  ?\[ ?t ?h ?i ?c ?k ?\] ?  ?  ?  ?  ?  ?  ?  ?\( ?\) backspace ?F ?\) return ?  ?  ?  ?  ?p ?i ?c ?  ?\[ ?\" ?\" ?$ ?\\ ?a ?l ?p ?h ?a ?$ ?\" ?\" ?, ?  ?d ?r ?a ?w ?, ?  ?f ?i ?l ?l ?= ?y ?e ?l ?l ?o ?w ?\] ?  ?\{ ?a ?n ?g ?l ?e ?  ?= ?  ?F ?- ?- ?X ?- ?- ?E ?\} ?\; return])
+
+(fset 'tirarParenteses
+   [?g ?g ?\M-% ?s ?c ?r ?i ?p ?t ?> ?\] ?\] return ?s ?c ?r ?i ?p ?t ?> return ?!])
+
+(fset 'acedilhar
+   [?g ?g ?\M-% ?\\ ?c ?  ?c return ?& ?c ?c ?e ?d ?i ?l ?\; return ?!])
+(fset 'raizesquadrada
+   "i\\sqrt{")
+(fset 'raizesN
+   [?i ?\\ ?s ?q ?r ?t ?\[ right ?\{])
+
+(fset 'grafico
+   [?i ?\\ ?b ?e ?g ?i ?n ?\{ ?t ?i ?k ?z ?p ?i ?c ?t ?u ?r ?e right return ?\\ ?n ?o ?d ?e ?\[ ?i ?n ?n ?e ?r ?  ?s ?e ?p ?= ?0 ?p ?t right ?  ?\( ?b ?a ?n ?d ?e ?i ?r ?a ?1 right ?  ?a ?t ?  ?\( ?2 ?0 ?0 ?, ?2 ?0 ?0 right return ?  ?  ?  ?  ?  ?  ?\{ ?\\ ?i ?n ?c ?l ?u ?d ?e ?g ?r ?a ?p ?h ?i ?c ?s ?\[ ?w ?i ?d ?t ?h ?= ?6 ?c ?m right ?\{ ?. ?p ?d ?f right right ?\; ?\; backspace return ?\\ ?e ?n ?d ?\{ ?t ?i ?k ?z ?p ?i ?c ?t ?u ?r ?e right return up up right right right right right right right right right right right right right right right right right right right right right right right right right right right right right right right right right right right])
+
+(fset 'center
+   [?i ?\\ ?b ?e ?g ?i ?n ?\{ ?c ?e ?n ?t ?e ?r right return return ?\\ ?e ?n ?d ?\{ ?c ?e ?n ?t ?e ?r up])
+
+
+
+(fset 'negrito
+   (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ([92 116 101 120 116 98 102 123 125 left] 0 "%d")) arg)))
+
+
+(fset 'italico
+   (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ([92 116 101 120 116 105 116 123 125 left] 0 "%d")) arg)))
+
+
+#+END_SRC
+
+
+
+* Parenteses setup
+  :PROPERTIES:
+  :ID:       292d6f9c-fd23-45af-88b1-65cbf5076387
+  :END:
+#+BEGIN_SRC emacs-lisp
+(electric-pair-mode 1)
+(setq electric-pair-preserve-balance nil)
+#+END_SRC
+
+* user init setup ?????
+  :PROPERTIES:
+  :ID:       79279c41-7f4e-4180-a841-25e1d1dc4942
+  :END:
+#+BEGIN_SRC emacs-lisp
+(setq user-init-file (or load-file-name(buffer-file-name)))
+(setq user-emacs-directory (file-name-directory user-init-file))
+#+END_SRC
+
+* Org-Agenda setup Outro?????
+  :PROPERTIES:
+  :ID:       a4d725cb-ddc0-40d7-aa1b-81715cdf60c6
+  :END:
+#+BEGIN_SRC emacs-lisp
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(org-agenda-custom-commands
+   '(("c" "Simple agenda view"
+      ((agenda "" nil)
+       (alltodo "" nil))
+      nil)
+     ("i" "Important: Urgent things and phone calls "
+      ((tags "URGENT"
+	     ((org-agenda-overriding-header "Urgent things to do")))
+       (tags "PHONE"
+	     ((org-agenda-overriding-header "Phone calls to do"))))
+      nil nil)
+     ("d" "todo"
+      ((todo "SOMEDAY"
+	     ((org-agenda-overriding-header "Someday desires"))))
+      nil nil)
+     ("w" "Waiting tasks"
+      ((todo "WAITING"
+	     ((org-agenda-overriding-header "Waiting tasks"))))
+      nil nil)
+     ("r" "Todo not scheduled"
+      ((todo "TODO"
+	     ((org-agenda-skip-function
+	       '(org-agenda-skip-entry-if 'scheduled))
+	      (org-agenda-overriding-header "Todo Not Scheduled: "))))
+      nil nil)) t)
+'(org-capture-templates nil t)
+ '(org-log-done 'time)
+ '(org-log-reschedule 'note)
+ '(org-refile-allow-creating-parent-nodes 'confirm)
+ '(org-refile-targets '((org-agenda-files :level . 1)))
+ '(org-refile-use-outline-path 'file)
+
+
+ '(package-selected-packages
+   '(mu4e-alert orgit which-key use-package undo-tree try org-gcal hungry-delete helm expand-region evil auto-complete auctex ace-window)))
+
+
+#+END_SRC
+
+
+
+
+
+* Capture 1 Setup Zamansky
+  :PROPERTIES:
+  :ID:       ba94ea53-d2c8-4eac-8279-7dba4e982b79
+  :END:
+#+BEGIN_SRC emacs-lisp
+;;(setq org-capture-templates
+      
+	;;("a" "Appointment" entry (file  "~/Dropbox/orgfiles/gcal.org" )
+;;	 "* %?\n\n%^T\n\n:PROPERTIES:\n\n:END:\n\n")
+;;	("l" "Link" entry (file+headline "~/Dropbox/orgfiles/links.org" "Links")
+;;	"* %? %^L %^g \n%T" :prepend t)
+;;	("b" "Blog idea" entry (file+headline "~/Dropbox/orgfiles/i.org" "Blog Topics:")
+;;	 "* %?\n%T" :prepend t)
+;;	("t" "To Do Item" entry (file+headline "~/Dropbox/orgfiles/i.org" "To Do")
+;;	 "* TODO %?\n%u" :prepend t)
+;;	("n" "Note" entry (file+headline "~/Dropbox/orgfiles/capture.org" "Note space")
+;;	 "* %?\n%u" :prepend t)
+;;	("n" "Note" entry (file+headline "~/Dropbox/orgfiles/flagged.org")
+;;	 "* %?\n%u" :prepend t)
+(setq org-capture-templates
+	'(("j" "Journal" entry (file+datetree "~/Dropbox/orgfiles/journal.org")
+	 "* %?\nEntered on %U\n  %i\n  %a ")
+	("c" "Screencast" entry (file+headline "~/Dropbox/orgfiles/screencastnotes.org" "Capture")
+	 "* %?\n%i\n")
+	("p" "Plano" entry  (file+datetree "~/Dropbox/orgfiles/plano.org" )
+	 "*  \n
+          tarefas previstas que estão no sistema
+          ======================================
+            - [ ] Review your calendar 
+            - [ ] Do an emergency scan of your new inputs to see if there is anything that must be taken care of right away \n      
+            - [ ] Check your lists. Consider the actions you can take in your current context, with the time you have avalaible or th                  ose you need to add to your itens for later today  
+\n
+                  Importantes tarefas
+                  ===================  
+                  - [ ]  
+                  - [ ]
+ \n     
+                  Tarefas acrescentadas que não estão no sistema
+                  ==============================================
+                  - [ ]
+                  - [ ]
+\n
+          Set aside clarifying time
+          ===========================
+            - [ ] Get Your In-tray to Empty
+            - [ ] Get Your email to Zero
+	   ")
+	("g" "Goal" entry  (file+datetree "~/Dropbox/orgfiles/capture.org" )
+	 "* GOAL %^{Objectivo}    
+\n Recorded on: %U \n  %i \n  %a   Last Review on:  %U \n  %i \n  %a
+         :SMART:
+         :Specific: %^{Que tipo de objectivo?}
+         :Mensurality: %^{Como medir?}
+         :Activity: %^{Como Agir?}
+         :Resources: %^{Quais os recursos?}
+         :Timebox: %^{Qual o prazo?}
+         :END:
+         :Actions:
+          Links to actions that support this goal:
+
+         :END: 
+")
+
+("t" "TODO" entry (file+headline "~/Dropbox/orgfiles/capture.org" "Capture")
+	 "* TODO %^{Description}                                      :NEW:
+Desired outcome: %?
+\n entered on  %U")
+("f" "Futebol" entry  (file+datetree "~/Dropbox/orgfiles/futebol.org")
+"* TODO %^{Equipa}                                              :%^{Equipa}:    
+:LOGBOOK:
+
+
+:END:                                             
+** Defesa                                                 :DEFESA:  
+   :PROPERTIES:
+   :ID:       31c04204-27f7-4c15-bd4d-7e58d010d5f8
+   :END:
+*** Linha defensiva                                
+    :PROPERTIES:
+    :ID:       5952ffca-4eb2-482e-90ea-a56c87f9cbb3
+    :END:
+:LOGBOOK:
+
+
+:END:
+*** Jogo aéreo
+    :PROPERTIES:
+    :ID:       305cd6a8-3e46-4963-9459-f5a0dcffbd59
+    :END:
+:LOGBOOK:
+
+
+:END:
+*** Capacidade choque
+    :PROPERTIES:
+    :ID:       ab6dde64-cc76-4cd6-9a59-8fdeb81555b9
+    :END:
+:LOGBOOK:
+
+
+:END:
+*** Velocidade da defesa
+    :PROPERTIES:
+    :ID:       e6a255a0-0815-4d28-80a1-53c0b8a57077
+    :END:
+:LOGBOOK:
+
+
+:END:
+*** Pressão
+    :PROPERTIES:
+    :ID:       529e8ecf-f070-4caa-9c45-bbecd5cc3c29
+    :END:
+:LOGBOOK:
+
+
+:END: 
+*** Defesas laterais
+    :PROPERTIES:
+    :ID:       d0a1802f-ba7d-4e32-a647-17932fe3abaf
+    :END:
+:LOGBOOK:
+
+
+:END:
+*** Pressão dos avançados
+    :PROPERTIES:
+    :ID:       a2f523b7-8053-486e-9fdb-f235dc35ea0d
+    :END:
+:LOGBOOK:
+
+
+:END:
+*** Capacidade de choque dos médios
+    :PROPERTIES:
+    :ID:       290348c2-58b8-4a6c-98cb-cdbd547b8b3a
+    :END:
+:LOGBOOK:
+
+
+:END:
+*** Coberturas
+    :PROPERTIES:
+    :ID:       604cf3fe-a6f6-44f3-a6e0-86eeb7937fcb
+    :END:
+:LOGBOOK:
+
+
+:END:
+** Ataque                                   :ATAQUE:  
+   :PROPERTIES:
+   :ID:       8209ff7a-adba-43cf-a1f6-2694dad07f35
+   :END:
+*** Capacidade de não perder a bola da defesa e ligar com os médios e os avançados
+    :PROPERTIES:
+    :ID:       0f7bace2-4047-4847-9cfd-bb8ef0dcf16b
+    :END:
+:LOGBOOK:
+
+
+:END:
+*** Capacidade de não perder a bola nos médios e sair da pressão.
+    :PROPERTIES:
+    :ID:       a91859ba-947b-40d9-925a-c77ddb1d9700
+    :END:
+:LOGBOOK:
+
+
+:END:
+*** Capacidade dos médios e alas de transporte de bola dando profundidade.
+    :PROPERTIES:
+    :ID:       9518892a-08ba-40dc-af4a-7ce3995b1c73
+    :END:
+:LOGBOOK:
+
+
+:END:
+*** Capacidade dos médios e alas de definir e fazer assistências.
+    :PROPERTIES:
+    :ID:       6278045d-8750-486c-bee4-d8dd09ae22cd
+    :END:
+:LOGBOOK:
+
+
+:END:
+*** Capacidade dos dos dribles dos alas em um para um.
+    :PROPERTIES:
+    :ID:       15053c5b-60bf-4677-8cdf-e0f08f4b205f
+    :END:
+:LOGBOOK:
+
+
+:END: 
+*** Capacidade área dos avançados.
+    :PROPERTIES:
+    :ID:       b0661be0-c663-4484-a58e-ca9c6cc78f27
+    :END:
+:LOGBOOK:
+
+
+:END:
+*** Capacidade dos centrais nas bolas paradas.
+    :PROPERTIES:
+    :ID:       c842b167-d5fe-441a-9f1c-ed4d36ee7d22
+    :END:
+:LOGBOOK:
+
+
+:END:
+*** Capacidade dos avançados de ganhar a profundidade.
+    :PROPERTIES:
+    :ID:       3b7050b8-484c-4692-919b-9c8b7bd07e16
+    :END:
+:LOGBOOK:
+
+
+:END:
+")
+
+
+
+("s" "SOMEDAY" entry (file+headline "~/Dropbox/orgfiles/capture.org" "Capture")
+u "* SOMEDAY %^{Description}                                      :NEW:
+Desired outcome: %?
+\n entered on  %U")
+
+("w" "WAITING" entry (file+headline "~/Dropbox/orgfiles/capture.org" "Capture")
+	 "* WAITING %^{Description}                                      :NEW:
+Desired outcome: %?
+\n entered on  %U")
+
+("d" "DELEGATED" entry (file+headline "~/Dropbox/orgfiles/capture.org" "Capture")
+	 "* DELEGATED %^{Description}                                      :NEW:
+Desired outcome: %?
+\n entered on  %U")
+
+("P" "PROJECT" entry (file+headline "~/Dropbox/orgfiles/capture.org" "Capture")
+	 "*PROJECT  %^{Description}                                      :NEW:
+Desired outcome: %?
+\n entered on  %U")
+("n" "NEXT" entry (file+headline "~/Dropbox/orgfiles/capture.org" "Capture")
+	 "* NEXT %^{Description}                                      :NEW:
+Desired outcome: %?
+\n entered on  %U")))
+
+
+
+
+;;''(org-agenda-skip-entry-if 'scheduled 'deadline)
+
+;;(org-add-agenda-custom-command
+;; '("b" todo "PROJECT"
+;;   ((org-agenda-skip-function '(org-agenda-skip-subtree-if
+;;                                'regexp ":waiting:"))
+;;    (org-agenda-overriding-header "Projects waiting for something: "))))
+
+
+;;(org-add-agenda-custom-command
+;; '("T" todo "TODO"
+ ;; (org-agenda-skip-entry-if 'scheduled )))
+
+;;(setq org-agenda-custom-commands
+ ;;      '("b" todo "TODO" ))
+ 
+#+END_SRC
+
+* Mu setup
+  :PROPERTIES:
+  :ID:       1bc5c171-d31c-4c07-abc7-d76cdcac745d
+  :END:
+#+BEGIN_SRC emacs-lisp
+(add-to-list 'load-path "/home/rui/Dropbox/opt/mu/mu4e")
+
+
+(require 'mu4e)
+
+(require 'smtpmail)
+
+
+(setq
+ message-send-mail-function 'smtpmail-send-it
+ starttls-use-gnutls t
+ mu4e-sent-messages-behavior 'sent
+ mu4e-sent-folder "/.gmail/Sent Itens"
+ mu4e-drafts-folder "/.gmail/Drafts"
+ user-mail-address "imap.gmail.com"
+ user-full-name "rui"
+ smtpmail-default-smtp-server "imap.gmail.com"
+ smtpmail-local-domain "gmail.com"
+ smtpmail-smtp-user "ruiagr@gmail.com"
+ smtpmail-smtp-server "imap.gmail.com"
+ smtpmail-stream-type 'starttls
+ smtpmail-smtp-service 587)
+
+(setq mu4e-maildir "~/.gmail"
+      mu4e-trash-folder "/Trash"
+      mu4e-refile-folder "/Archive"
+      mu4e-get-mail-command "mbsync -a"
+      mu4e-update-interval 300 ;; second
+      mu4e-compose-signature-auto-include nil
+      mu4e-view-show-images t
+      mu4e-view-show-addresses t
+      mu4e-attachment-dir "~/Downloads"
+      mu4e-use-fancy-chars t
+      )
+
+
+
+
+
+;;; Mail directory shortcuts
+(setq mu4e-maildir-shortcuts
+      '(
+        ("/gmail/INBOX" . ?h)
+        ("/gmail/Archive" . ?H)
+	("/gmail/Sent Itens" .?s)
+	))
+
+;;; Bookmarks
+(setq mu4e-bookmarks
+      `(
+	("flag:unread AND NOT flag:trashed" "Unread messages" ?u)
+	("flag:unread" "Unread messages" ?n)
+        ("date:today..now" "Today's messages" ?t)
+        ("date:7d..now" "Last 7 days" ?w)
+        ("mime:image/*" "Messages with images" ?p)
+        (,(mapconcat 'identity
+                     (mapcar
+                      (lambda (maildir)
+                        (concat "maildir:" (car maildir)))
+                      mu4e-maildir-shortcuts) " OR ")
+         "All inboxes" ?i)))
+
+
+(require 'org-mu4e)
+(setq org-mu4e-convert-to-html t)
+
+(add-to-list 'load-path "/home/rui/Dropbox/opt/org-mode/contrib/lisp")
+(require 'org-mime)
+
+;; this seems to fix the babel file saving thing
+(defun org~mu4e-mime-replace-images (str current-file)
+  "Replace images in html files with cid links."
+  (let (html-images)
+    (cons
+     (replace-regexp-in-string ;; replace images in html
+      "src=\"\\([^\"]+\\)\""
+      (lambda (text)
+        (format
+         "src=\"./:%s\""
+         (let* ((url (and (string-match "src=\"\\([^\"]+\\)\"" text)
+                          (match-string 1 text)))
+                (path (expand-file-name
+                       url (file-name-directory current-file)))
+                (ext (file-name-extension path))
+                (id (replace-regexp-in-string "[\/\\\\]" "_" path)))
+           (add-to-list 'html-images
+                        (org~mu4e-mime-file
+												 (concat "image/" ext) path id))
+           id)))
+      str)
+     html-images)))
+
+(add-to-list 'mu4e-view-actions
+						 '("ViewInBrowser" . mu4e-action-view-in-browser) t)
+
+
+
+
+(use-package mu4e-alert
+	:ensure t)
+
+
+(mu4e-alert-set-default-style 'libnotify)
+(add-hook 'after-init-hook #'mu4e-alert-enable-notifications)
+(add-hook 'after-init-hook #'mu4e-alert-enable-mode-line-display)
+
+
+
+
+;;need this for hash access
+(require 'subr-x)
+
+
+;; we seem to need this to fix the org-store-link issue
+(org-link-set-parameters "mu4e" :follow #'org-mu4e-open :store 
+#'org-mu4e-store-link)
+
+
+;; contact tweaks
+
+;;(setq mu4e-compose-complete-only-after t)
+;;(setq mu4e-compose-complete-only-personal t)
+
+#+END_SRC
+
+
+* Swiper / Ivy / Counsel
+  :PROPERTIES:
+  :ID:       45dcfc89-31ab-4c82-be67-15740b0510e0
+  :END:
+Swiper gives us a really efficient incremental search with regular expressions and Ivy / Counsel replace a lot of ido or helms completion functionality
+#+BEGIN_SRC emacs-lisp
+ (use-package counsel
+:ensure t
+  :bind
+  (("M-y" . counsel-yank-pop)
+   :map ivy-minibuffer-map
+   ("M-y" . ivy-next-line)))
+
+
+
+
+  (use-package ivy
+  :ensure t
+  :diminish (ivy-mode)
+  :bind (("C-x b" . ivy-switch-buffer))
+  :config
+  (ivy-mode 1)
+  (setq ivy-use-virtual-buffers t)
+  (setq ivy-count-format "%d/%d ")
+  (setq ivy-display-style 'fancy))
+
+
+  (use-package swiper
+  :ensure t
+  :bind (("C-s" . swiper-isearch)
+	 ("C-r" . swiper-isearch)
+	 ("C-c C-r" . ivy-resume)
+	 ("M-x" . counsel-M-x)
+	 ("C-x C-f" . counsel-find-file))
+  :config
+  (progn
+    (ivy-mode 1)
+    (setq ivy-use-virtual-buffers t)
+    (setq ivy-display-style 'fancy)
+    (define-key read-expression-map (kbd "C-r") 'counsel-expression-history)
+    ))
+#+END_SRC
+
+
+* Avy - navigate by searching for a letter on the screen and jumping to it
+  :PROPERTIES:
+  :ID:       d6916c10-4587-4efb-81ec-8397715f8c7c
+  :END:
+See https://github.com/abo-abo/avy for more info
+
+#+BEGIN_SRC emacs-lisp
+(use-package avy
+:ensure t
+:bind ("M-s" . avy-goto-word-1)) ;; changed from char as per jcs
+#+END_SRC
+
+* iedit and narrow / widen dwim
+  :PROPERTIES:
+  :ID:       26568e51-d4f8-45f8-8f77-e3d102816e50
+  :END:
+#+BEGIN_SRC emacs-lisp
+; mark and edit all copies of the marked region simultaniously. 
+(use-package iedit
+:ensure t)
+
+; if you're windened, narrow to the region, if you're narrowed, widen
+; bound to C-x n
+(defun narrow-or-widen-dwim (p)
+"If the buffer is narrowed, it widens. Otherwise, it narrows intelligently.
+Intelligently means: region, org-src-block, org-subtree, or defun,
+whichever applies first.
+Narrowing to org-src-block actually calls `org-edit-src-code'.
+
+With prefix P, don't widen, just narrow even if buffer is already
+narrowed."
+(interactive "P")
+(declare (interactive-only))
+(cond ((and (buffer-narrowed-p) (not p)) (widen))
+((region-active-p)
+(narrow-to-region (region-beginning) (region-end)))
+((derived-mode-p 'org-mode)
+;; `org-edit-src-code' is not a real narrowing command.
+;; Remove this first conditional if you don't want it.
+(cond ((ignore-errors (org-edit-src-code))
+(delete-other-windows))
+((org-at-block-p)
+(org-narrow-to-block))
+(t (org-narrow-to-subtree))))
+(t (narrow-to-defun))))
+
+;; (define-key endless/toggle-map "n" #'narrow-or-widen-dwim)
+;; This line actually replaces Emacs' entire narrowing keymap, that's
+;; how much I like this command. Only copy it if that's what you want.
+(define-key ctl-x-map "n" #'narrow-or-widen-dwim)
+#+END_SRC
+
+* Misc packages
+  :PROPERTIES:
+  :ID:       1f0f3c88-630c-4319-8ad3-188f536fc0d7
+  :END:
+#+BEGIN_SRC emacs-lisp
+ ; Highlights the current cursor line
+  (global-hl-line-mode t)
+  
+  ; flashes the cursor's line when you scroll
+  (use-package beacon
+  :ensure t
+  :config
+  (beacon-mode 1)
+  ; (setq beacon-color "#666600")
+  )
+  
+  ; deletes all the whitespace when you hit backspace or delete
+  (use-package hungry-delete
+  :ensure t
+  :config
+  (global-hungry-delete-mode))
+  
+
+  (use-package multiple-cursors
+  :ensure t)
+
+  ; expand the marked region in semantic increments (negative prefix to reduce region)
+  (use-package expand-region
+  :ensure t
+  :config 
+  (global-set-key (kbd "C-=") 'er/expand-region))
+
+(setq save-interprogram-paste-before-kill t)
+
+
+(global-auto-revert-mode 1) ;; you might not want this
+(setq auto-revert-verbose nil) ;; or this
+(global-set-key (kbd "<f5>") 'revert-buffer)
+(global-set-key (kbd "<f6>") 'revert-buffer)
+#+END_SRC
+
+* Reveal.js
+  :PROPERTIES:
+  :ID:       4cf2f7af-22b6-4908-94c7-4308a279a2e7
+  :END:
+#+BEGIN_SRC emacs-lisp
+(use-package ox-reveal
+  :ensure t
+  :config
+    (require 'ox-reveal)
+    (setq org-reveal-root "http://cdn.jsdelivr.net/reveal.js/3.0.0/")
+    (setq org-reveal-mathjax t)
+)
+    (use-package htmlize
+    :ensure t)
+#+END_SRC
+
+* Flycheck
+  :PROPERTIES:
+  :ID:       876c577d-ad6b-47e3-8f74-1c8e1bd860fb
+  :END:
+#+BEGIN_SRC emacs-lisp
+(use-package flycheck
+  :ensure t
+  :init
+  (global-flycheck-mode t))
+#+END_SRC
+
+
+* Yasnippet
+  :PROPERTIES:
+  :ID:       f64e9eb6-9b19-4ab1-8adc-982381b77df4
+  :END:
+#+BEGIN_SRC emacs-lisp
+    (use-package yasnippet
+      :ensure t
+      :init
+        (yas-global-mode 1))
+
+;    (use-package yasnippet-snippets
+;      :ensure t)
+#+END_SRC
+
+* Web Mode
+  :PROPERTIES:
+  :ID:       c71a2776-c697-4029-899a-a0d314354d79
+  :END:
+
+#+BEGIN_SRC emacs-lisp
+ (use-package web-mode
+    :ensure t
+    :config
+	   (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+	   (add-to-list 'auto-mode-alist '("\\.vue?\\'" . web-mode))
+	   (setq web-mode-engines-alist
+		 '(("django"    . "\\.html\\'")))
+	   (setq web-mode-ac-sources-alist
+	   '(("css" . (ac-source-css-property))
+	   ("vue" . (ac-source-words-in-buffer ac-source-abbrev))
+         ("html" . (ac-source-words-in-buffer ac-source-abbrev))))
+(setq web-mode-enable-auto-closing t))
+(setq web-mode-enable-auto-quoting t) ; this fixes the quote problem I mentioned
+#+END_SRC

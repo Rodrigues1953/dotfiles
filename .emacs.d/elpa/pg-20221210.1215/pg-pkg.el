@@ -1,0 +1,2 @@
+;;; Generated package description from /home/rui/.emacs.d/elpa/pg-20221210.1215/pg.el  -*- no-byte-compile: t -*-
+(define-package "pg" "20221210.1215" "Emacs Lisp socket-level interface to the PostgreSQL RDBMS" '((emacs "26.1")) :commit "f91d546a35ed3479cdb656b17525285e11565892" :authors '(("Eric Marsden" . "eric.marsden@risk-engineering.org")) :maintainer '("Eric Marsden" . "eric.marsden@risk-engineering.org") :keywords '("data" "comm" "database" "postgresql") :url "https://github.com/emarsden/pg-el")

@@ -1,0 +1,2 @@
+;;; Generated package description from /home/rui/.emacs.d/elpa/mu4e-maildirs-extension-20220517.1852/mu4e-maildirs-extension.el  -*- no-byte-compile: t -*-
+(define-package "mu4e-maildirs-extension" "20220517.1852" "Show mu4e maildirs summary in mu4e-main-view" '((dash "0.0.0")) :commit "cdc2e141d8ecd59508a5cd50d6d02120073bf4f1" :authors '(("Andreu Gil Pàmies" . "agpchil@gmail.com")) :maintainer '("Andreu Gil Pàmies" . "agpchil@gmail.com") :url "http://github.com/agpchil/mu4e-maildirs-extension")

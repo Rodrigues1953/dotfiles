@@ -1,0 +1,2 @@
+;;; Generated package description from /home/rui/.emacs.d/elpa/emacsql-pg-20230224.1201/emacsql-pg.el  -*- no-byte-compile: t -*-
+(define-package "emacsql-pg" "20230224.1201" "EmacSQL back-end for PostgreSQL via pg" '((emacs "25.1") (emacsql "20230220") (pg "0.16")) :commit "7c533fb6c27c3a10b6ab05bddf663e37c109e459" :authors '(("Christopher Wellons" . "wellons@nullprogram.com")) :maintainer '("Jonas Bernoulli" . "jonas@bernoul.li") :url "https://github.com/magit/emacsql")

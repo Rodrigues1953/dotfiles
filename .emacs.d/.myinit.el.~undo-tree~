@@ -1,0 +1,214 @@
+(undo-tree-save-format-version . 1)
+"7f3444bac54d1a66d74717fe1c4658e3ddbb3b3a"
+[nil nil nil nil (25642 363 336510 334000) 0 nil]
+([nil nil ((5727 . 6043) (#("(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(aw-leading-char-face ((t (:inherit ace-jump-face-foreground :height 3.0)))))" 0 316 (fontified nil)) . -5727) (31903 . 31905) (#("
+" 0 1 (fontified nil)) . -31903) (31756 . 31904) (#(" " 0 1 (fontified nil)) . 31756) (31496 . 31757) (31484 . 31487) (31421 . 31424) (31374 . 31377) (31339 . 31342) (31319 . 31322) (31287 . 31290) (31273 . 31276) (31216 . 31219) (31193 . 31196) (31166 . 31169) (31152 . 31155) (31093 . 31096) (31070 . 31073) (31052 . 31055) (31038 . 31041) (30977 . 30980) (30957 . 30960) (30894 . 30897) (30872 . 30875) (30817 . 30820) (30807 . 30810) (30783 . 30786) (30759 . 30762) (#("
+" 0 1 (fontified nil)) . -31427) (31415 . 31418) (31354 . 31358) (31309 . 31314) (31279 . 31282) (31262 . 31265) (31234 . 31236) (31222 . 31225) (31168 . 31171) (31148 . 31151) (31125 . 31127) (31113 . 31116) (31057 . 31060) (31037 . 31040) (31023 . 31025) (31011 . 31014) (30953 . 30956) (30935 . 30939) (30876 . 30879) (30857 . 30860) (30806 . 30808) (30798 . 30801) (30776 . 30780) (30756 . 30759) (31357 . 31358) (31347 . 31348) (#(" " 0 1 (fontified nil)) . -31347) (31290 . 31291) (#("
+" 0 1 (fontified nil)) . 31290) (31290 . 31291) (#(" " 0 1 (fontified nil)) . -31290) (31250 . 31251) (#(" " 0 1 (fontified nil)) . 31250) (31223 . 31224) (#(" " 0 1 (fontified nil)) . 31223) (31209 . 31210) (#(" " 0 1 (fontified nil)) . 31209) (31183 . 31184) (#("
+" 0 1 (fontified nil)) . 31183) (31183 . 31184) (#(" " 0 1 (fontified nil)) . -31183) (31174 . 31175) (#(" " 0 1 (fontified nil)) . -31174) (31123 . 31124) (#(" " 0 1 (fontified nil)) . 31123) (31106 . 31107) (#(" " 0 1 (fontified nil)) . 31106) (31085 . 31086) (#("
+" 0 1 (fontified nil)) . 31085) (31085 . 31086) (#(" " 0 1 (fontified nil)) . -31085) (31076 . 31077) (#(" " 0 1 (fontified nil)) . -31076) (31023 . 31024) (#(" " 0 1 (fontified nil)) . 31023) (31006 . 31007) (#(" " 0 1 (fontified nil)) . 31006) (30994 . 30995) (#("
+" 0 1 (fontified nil)) . 30994) (30994 . 30995) (#(" " 0 1 (fontified nil)) . -30994) (30985 . 30986) (#(" " 0 1 (fontified nil)) . -30985) (30930 . 30931) (#(" " 0 1 (fontified nil)) . 30930) (30916 . 30917) (#("
+" 0 1 (fontified nil)) . 30916) (30916 . 30917) (#(" " 0 1 (fontified nil)) . -30916) (30860 . 30861) (#(" " 0 1 (fontified nil)) . 30860) (30844 . 30845) (#(" " 0 1 (fontified nil)) . 30844) (30795 . 30796) (#("
+" 0 1 (fontified nil)) . 30795) (30795 . 30796) (#(" " 0 1 (fontified nil)) . -30795) (30790 . 30791) (#(" " 0 1 (fontified nil)) . -30790) (30772 . 30773) (#("
+" 0 1 (fontified nil)) . 30772) (30772 . 30773) (#(" " 0 1 (fontified nil)) . -30772) (30755 . 30756) (#(" " 0 1 (fontified nil)) . 30755) (30724 . 31357) (#(" " 0 1 (fontified nil)) . 30724) (30450 . 30725) (#("(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(org-agenda-custom-commands
+   '((\"c\" \"Simple agenda view\"
+      ((agenda \"\" nil)
+       (alltodo \"\" nil))
+      nil)
+     (\"i\" \"Important: Urgent things and phone calls \"
+      ((tags \"URGENT\"
+	     ((org-agenda-overriding-header \"Urgent things to do\")))
+       (tags \"PHONE\"
+	     ((org-agenda-overriding-header \"Phone calls to do\"))))
+      nil nil)
+     (\"d\" \"todo\"
+      ((todo \"SOMEDAY\"
+	     ((org-agenda-overriding-header \"Someday desires\"))))
+      nil nil)
+     (\"w\" \"Waiting tasks\"
+      ((todo \"WAITING\"
+	     ((org-agenda-overriding-header \"Waiting tasks\"))))
+      nil nil)
+     (\"r\" \"Todo not scheduled\"
+      ((todo \"TODO\"
+	     ((org-agenda-skip-function
+	       '(org-agenda-skip-entry-if 'scheduled))
+	      (org-agenda-overriding-header \"Todo Not Scheduled: \"))))
+      nil nil)) t)
+'(org-capture-templates nil t)
+ '(org-log-done 'time)
+ '(org-log-reschedule 'note)
+ '(org-refile-allow-creating-parent-nodes 'confirm)
+ '(org-refile-targets '((org-agenda-files :level . 1)))
+ '(org-refile-use-outline-path 'file)
+
+
+ '(package-selected-packages
+   '(mu4e-alert orgit which-key use-package undo-tree try org-gcal hungry-delete helm expand-region evil auto-complete auctex ace-window)))" 0 1449 (fontified nil)) . -30450) (t 25641 65365 908191 72000)) nil (25642 363 336462 981000) 0 nil])
+([nil nil ((5727 . 6043) (#("(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(aw-leading-char-face ((t (:inherit ace-jump-face-foreground :height 3.0)))))" 0 316 (fontified nil)) . -5727) (31908 . 31910) (#("
+" 0 1 (fontified nil)) . -31908) (31754 . 31909) (#(" " 0 1 (fontified nil)) . 31754) (31496 . 31755) (31484 . 31487) (31421 . 31424) (31374 . 31377) (31339 . 31342) (31319 . 31322) (31287 . 31290) (31273 . 31276) (31216 . 31219) (31193 . 31196) (31166 . 31169) (31152 . 31155) (31093 . 31096) (31070 . 31073) (31052 . 31055) (31038 . 31041) (30977 . 30980) (30957 . 30960) (30894 . 30897) (30872 . 30875) (30817 . 30820) (30807 . 30810) (30783 . 30786) (30759 . 30762) (#("
+" 0 1 (fontified nil)) . -31427) (31415 . 31418) (31354 . 31358) (31309 . 31314) (31279 . 31282) (31262 . 31265) (31234 . 31236) (31222 . 31225) (31168 . 31171) (31148 . 31151) (31125 . 31127) (31113 . 31116) (31057 . 31060) (31037 . 31040) (31023 . 31025) (31011 . 31014) (30953 . 30956) (30935 . 30939) (30876 . 30879) (30857 . 30860) (30806 . 30808) (30798 . 30801) (30776 . 30780) (30756 . 30759) (31357 . 31358) (31347 . 31348) (#(" " 0 1 (fontified nil)) . -31347) (31290 . 31291) (#("
+" 0 1 (fontified nil)) . 31290) (31290 . 31291) (#(" " 0 1 (fontified nil)) . -31290) (31250 . 31251) (#(" " 0 1 (fontified nil)) . 31250) (31223 . 31224) (#(" " 0 1 (fontified nil)) . 31223) (31209 . 31210) (#(" " 0 1 (fontified nil)) . 31209) (31183 . 31184) (#("
+" 0 1 (fontified nil)) . 31183) (31183 . 31184) (#(" " 0 1 (fontified nil)) . -31183) (31174 . 31175) (#(" " 0 1 (fontified nil)) . -31174) (31123 . 31124) (#(" " 0 1 (fontified nil)) . 31123) (31106 . 31107) (#(" " 0 1 (fontified nil)) . 31106) (31085 . 31086) (#("
+" 0 1 (fontified nil)) . 31085) (31085 . 31086) (#(" " 0 1 (fontified nil)) . -31085) (31076 . 31077) (#(" " 0 1 (fontified nil)) . -31076) (31023 . 31024) (#(" " 0 1 (fontified nil)) . 31023) (31006 . 31007) (#(" " 0 1 (fontified nil)) . 31006) (30994 . 30995) (#("
+" 0 1 (fontified nil)) . 30994) (30994 . 30995) (#(" " 0 1 (fontified nil)) . -30994) (30985 . 30986) (#(" " 0 1 (fontified nil)) . -30985) (30930 . 30931) (#(" " 0 1 (fontified nil)) . 30930) (30916 . 30917) (#("
+" 0 1 (fontified nil)) . 30916) (30916 . 30917) (#(" " 0 1 (fontified nil)) . -30916) (30860 . 30861) (#(" " 0 1 (fontified nil)) . 30860) (30844 . 30845) (#(" " 0 1 (fontified nil)) . 30844) (30795 . 30796) (#("
+" 0 1 (fontified nil)) . 30795) (30795 . 30796) (#(" " 0 1 (fontified nil)) . -30795) (30790 . 30791) (#(" " 0 1 (fontified nil)) . -30790) (30772 . 30773) (#("
+" 0 1 (fontified nil)) . 30772) (30772 . 30773) (#(" " 0 1 (fontified nil)) . -30772) (30755 . 30756) (#(" " 0 1 (fontified nil)) . 30755) (30724 . 31357) (#(" " 0 1 (fontified nil)) . 30724) (30450 . 30725) (#("(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(org-agenda-custom-commands
+   '((\"c\" \"Simple agenda view\"
+      ((agenda \"\" nil)
+       (alltodo \"\" nil))
+      nil)
+     (\"i\" \"Important: Urgent things and phone calls \"
+      ((tags \"URGENT\"
+	     ((org-agenda-overriding-header \"Urgent things to do\")))
+       (tags \"PHONE\"
+	     ((org-agenda-overriding-header \"Phone calls to do\"))))
+      nil nil)
+     (\"d\" \"todo\"
+      ((todo \"SOMEDAY\"
+	     ((org-agenda-overriding-header \"Someday desires\"))))
+      nil nil)
+     (\"w\" \"Waiting tasks\"
+      ((todo \"WAITING\"
+	     ((org-agenda-overriding-header \"Waiting tasks\"))))
+      nil nil)
+     (\"r\" \"Todo not scheduled\"
+      ((todo \"TODO\"
+	     ((org-agenda-skip-function
+	       '(org-agenda-skip-entry-if 'scheduled))
+	      (org-agenda-overriding-header \"Todo Not Scheduled: \"))))
+      nil nil)))
+ '(org-capture-templates nil t)
+ '(org-log-done 'time)
+ '(org-log-reschedule 'note)
+ '(org-refile-allow-creating-parent-nodes 'confirm)
+ '(org-refile-targets '((org-agenda-files :level . 1)))
+ '(org-refile-use-outline-path 'file)
+ '(package-selected-packages
+   '(orgalist mu4e-alert orgit which-key use-package undo-tree try org-gcal hungry-delete helm expand-region evil auto-complete auctex ace-window)))" 0 1455 (fontified nil)) . -30450) (t 25642 363 434762 570000)) nil (25642 1845 634496 636000) 0 nil])
+([nil nil ((5727 . 6043) (#("(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(aw-leading-char-face ((t (:inherit ace-jump-face-foreground :height 3.0)))))" 0 316 (fontified nil)) . -5727) (31920 . 31922) (#("
+" 0 1 (fontified nil)) . -31920) (31754 . 31921) (#(" " 0 1 (fontified nil)) . 31754) (31496 . 31755) (31484 . 31487) (31421 . 31424) (31374 . 31377) (31339 . 31342) (31319 . 31322) (31287 . 31290) (31273 . 31276) (31216 . 31219) (31193 . 31196) (31166 . 31169) (31152 . 31155) (31093 . 31096) (31070 . 31073) (31052 . 31055) (31038 . 31041) (30977 . 30980) (30957 . 30960) (30894 . 30897) (30872 . 30875) (30817 . 30820) (30807 . 30810) (30783 . 30786) (30759 . 30762) (#("
+" 0 1 (fontified nil)) . -31427) (31415 . 31418) (31354 . 31358) (31309 . 31314) (31279 . 31282) (31262 . 31265) (31234 . 31236) (31222 . 31225) (31168 . 31171) (31148 . 31151) (31125 . 31127) (31113 . 31116) (31057 . 31060) (31037 . 31040) (31023 . 31025) (31011 . 31014) (30953 . 30956) (30935 . 30939) (30876 . 30879) (30857 . 30860) (30806 . 30808) (30798 . 30801) (30776 . 30780) (30756 . 30759) (31357 . 31358) (31347 . 31348) (#(" " 0 1 (fontified nil)) . -31347) (31290 . 31291) (#("
+" 0 1 (fontified nil)) . 31290) (31290 . 31291) (#(" " 0 1 (fontified nil)) . -31290) (31250 . 31251) (#(" " 0 1 (fontified nil)) . 31250) (31223 . 31224) (#(" " 0 1 (fontified nil)) . 31223) (31209 . 31210) (#(" " 0 1 (fontified nil)) . 31209) (31183 . 31184) (#("
+" 0 1 (fontified nil)) . 31183) (31183 . 31184) (#(" " 0 1 (fontified nil)) . -31183) (31174 . 31175) (#(" " 0 1 (fontified nil)) . -31174) (31123 . 31124) (#(" " 0 1 (fontified nil)) . 31123) (31106 . 31107) (#(" " 0 1 (fontified nil)) . 31106) (31085 . 31086) (#("
+" 0 1 (fontified nil)) . 31085) (31085 . 31086) (#(" " 0 1 (fontified nil)) . -31085) (31076 . 31077) (#(" " 0 1 (fontified nil)) . -31076) (31023 . 31024) (#(" " 0 1 (fontified nil)) . 31023) (31006 . 31007) (#(" " 0 1 (fontified nil)) . 31006) (30994 . 30995) (#("
+" 0 1 (fontified nil)) . 30994) (30994 . 30995) (#(" " 0 1 (fontified nil)) . -30994) (30985 . 30986) (#(" " 0 1 (fontified nil)) . -30985) (30930 . 30931) (#(" " 0 1 (fontified nil)) . 30930) (30916 . 30917) (#("
+" 0 1 (fontified nil)) . 30916) (30916 . 30917) (#(" " 0 1 (fontified nil)) . -30916) (30860 . 30861) (#(" " 0 1 (fontified nil)) . 30860) (30844 . 30845) (#(" " 0 1 (fontified nil)) . 30844) (30795 . 30796) (#("
+" 0 1 (fontified nil)) . 30795) (30795 . 30796) (#(" " 0 1 (fontified nil)) . -30795) (30790 . 30791) (#(" " 0 1 (fontified nil)) . -30790) (30772 . 30773) (#("
+" 0 1 (fontified nil)) . 30772) (30772 . 30773) (#(" " 0 1 (fontified nil)) . -30772) (30755 . 30756) (#(" " 0 1 (fontified nil)) . 30755) (30724 . 31357) (#(" " 0 1 (fontified nil)) . 30724) (30450 . 30725) (#("(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(org-agenda-custom-commands
+   '((\"c\" \"Simple agenda view\"
+      ((agenda \"\" nil)
+       (alltodo \"\" nil))
+      nil)
+     (\"i\" \"Important: Urgent things and phone calls \"
+      ((tags \"URGENT\"
+	     ((org-agenda-overriding-header \"Urgent things to do\")))
+       (tags \"PHONE\"
+	     ((org-agenda-overriding-header \"Phone calls to do\"))))
+      nil nil)
+     (\"d\" \"todo\"
+      ((todo \"SOMEDAY\"
+	     ((org-agenda-overriding-header \"Someday desires\"))))
+      nil nil)
+     (\"w\" \"Waiting tasks\"
+      ((todo \"WAITING\"
+	     ((org-agenda-overriding-header \"Waiting tasks\"))))
+      nil nil)
+     (\"r\" \"Todo not scheduled\"
+      ((todo \"TODO\"
+	     ((org-agenda-skip-function
+	       '(org-agenda-skip-entry-if 'scheduled))
+	      (org-agenda-overriding-header \"Todo Not Scheduled: \"))))
+      nil nil)))
+ '(org-capture-templates nil)
+ '(org-log-done 'time)
+ '(org-log-reschedule 'note)
+ '(org-refile-allow-creating-parent-nodes 'confirm)
+ '(org-refile-targets '((org-agenda-files :level . 1)))
+ '(org-refile-use-outline-path 'file)
+ '(package-selected-packages
+   '(denote orgalist mu4e-alert orgit which-key use-package undo-tree try org-gcal hungry-delete helm expand-region evil auto-complete auctex ace-window)))" 0 1460 (fontified nil)) . -30450) (t 25642 1845 807981 869000)) nil (25672 25361 869544 109000) 0 nil])
+([nil current ((5727 . 6043) (#("(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(aw-leading-char-face ((t (:inherit ace-jump-face-foreground :height 3.0)))))" 0 316 (fontified nil)) . -5727) (31936 . 31938) (#("
+" 0 1 (fontified nil)) . -31936) (31754 . 31937) (#(" " 0 1 (fontified nil)) . 31754) (31496 . 31755) (31484 . 31487) (31421 . 31424) (31374 . 31377) (31339 . 31342) (31319 . 31322) (31287 . 31290) (31273 . 31276) (31216 . 31219) (31193 . 31196) (31166 . 31169) (31152 . 31155) (31093 . 31096) (31070 . 31073) (31052 . 31055) (31038 . 31041) (30977 . 30980) (30957 . 30960) (30894 . 30897) (30872 . 30875) (30817 . 30820) (30807 . 30810) (30783 . 30786) (30759 . 30762) (#("
+" 0 1 (fontified nil)) . -31427) (31415 . 31418) (31354 . 31358) (31309 . 31314) (31279 . 31282) (31262 . 31265) (31234 . 31236) (31222 . 31225) (31168 . 31171) (31148 . 31151) (31125 . 31127) (31113 . 31116) (31057 . 31060) (31037 . 31040) (31023 . 31025) (31011 . 31014) (30953 . 30956) (30935 . 30939) (30876 . 30879) (30857 . 30860) (30806 . 30808) (30798 . 30801) (30776 . 30780) (30756 . 30759) (31357 . 31358) (31347 . 31348) (#(" " 0 1 (fontified nil)) . -31347) (31290 . 31291) (#("
+" 0 1 (fontified nil)) . 31290) (31290 . 31291) (#(" " 0 1 (fontified nil)) . -31290) (31250 . 31251) (#(" " 0 1 (fontified nil)) . 31250) (31223 . 31224) (#(" " 0 1 (fontified nil)) . 31223) (31209 . 31210) (#(" " 0 1 (fontified nil)) . 31209) (31183 . 31184) (#("
+" 0 1 (fontified nil)) . 31183) (31183 . 31184) (#(" " 0 1 (fontified nil)) . -31183) (31174 . 31175) (#(" " 0 1 (fontified nil)) . -31174) (31123 . 31124) (#(" " 0 1 (fontified nil)) . 31123) (31106 . 31107) (#(" " 0 1 (fontified nil)) . 31106) (31085 . 31086) (#("
+" 0 1 (fontified nil)) . 31085) (31085 . 31086) (#(" " 0 1 (fontified nil)) . -31085) (31076 . 31077) (#(" " 0 1 (fontified nil)) . -31076) (31023 . 31024) (#(" " 0 1 (fontified nil)) . 31023) (31006 . 31007) (#(" " 0 1 (fontified nil)) . 31006) (30994 . 30995) (#("
+" 0 1 (fontified nil)) . 30994) (30994 . 30995) (#(" " 0 1 (fontified nil)) . -30994) (30985 . 30986) (#(" " 0 1 (fontified nil)) . -30985) (30930 . 30931) (#(" " 0 1 (fontified nil)) . 30930) (30916 . 30917) (#("
+" 0 1 (fontified nil)) . 30916) (30916 . 30917) (#(" " 0 1 (fontified nil)) . -30916) (30860 . 30861) (#(" " 0 1 (fontified nil)) . 30860) (30844 . 30845) (#(" " 0 1 (fontified nil)) . 30844) (30795 . 30796) (#("
+" 0 1 (fontified nil)) . 30795) (30795 . 30796) (#(" " 0 1 (fontified nil)) . -30795) (30790 . 30791) (#(" " 0 1 (fontified nil)) . -30790) (30772 . 30773) (#("
+" 0 1 (fontified nil)) . 30772) (30772 . 30773) (#(" " 0 1 (fontified nil)) . -30772) (30755 . 30756) (#(" " 0 1 (fontified nil)) . 30755) (30724 . 31357) (#(" " 0 1 (fontified nil)) . 30724) (30450 . 30725) (#("(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(org-agenda-custom-commands
+   '((\"c\" \"Simple agenda view\"
+      ((agenda \"\" nil)
+       (alltodo \"\" nil))
+      nil)
+     (\"i\" \"Important: Urgent things and phone calls \"
+      ((tags \"URGENT\"
+	     ((org-agenda-overriding-header \"Urgent things to do\")))
+       (tags \"PHONE\"
+	     ((org-agenda-overriding-header \"Phone calls to do\"))))
+      nil nil)
+     (\"d\" \"todo\"
+      ((todo \"SOMEDAY\"
+	     ((org-agenda-overriding-header \"Someday desires\"))))
+      nil nil)
+     (\"w\" \"Waiting tasks\"
+      ((todo \"WAITING\"
+	     ((org-agenda-overriding-header \"Waiting tasks\"))))
+      nil nil)
+     (\"r\" \"Todo not scheduled\"
+      ((todo \"TODO\"
+	     ((org-agenda-skip-function
+	       '(org-agenda-skip-entry-if 'scheduled))
+	      (org-agenda-overriding-header \"Todo Not Scheduled: \"))))
+      nil nil)))
+ '(org-capture-templates nil)
+ '(org-log-done 'time)
+ '(org-log-reschedule 'note)
+ '(org-refile-allow-creating-parent-nodes 'confirm)
+ '(org-refile-targets '((org-agenda-files :level . 1)))
+ '(org-refile-use-outline-path 'file)
+ '(package-selected-packages
+   '(denote-menu denote orgalist mu4e-alert orgit which-key use-package undo-tree try org-gcal hungry-delete helm expand-region evil auto-complete auctex ace-window)))" 0 1472 (fontified nil)) . -30450) (t 25672 25361 946388 248000)) nil (25676 19729 402169 604000) 0 nil])
+nil
